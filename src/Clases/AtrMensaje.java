@@ -54,39 +54,51 @@ public class AtrMensaje  implements Serializable  {
 
     final String ANSI_RESET = "\u001B[0m";
 
-    public String toString() {
+  public String toString() {
+    final String ANSI_PURPLE = "\u001B[35m";
+    final String ANSI_BLUE = "\u001B[34m";
+    StringBuilder sb = new StringBuilder();
 
-        final String ANSI_PURPLE = "\u001B[35m";
+    sb.append("Mensaje\n");
+    sb.append(ANSI_PURPLE).append(getFechaHora()).append(" | @").append(autor).append("\n")
+            .append(ajustarTexto(contenido, ANSI_PURPLE, "")).append(ANSI_RESET).append("\n");
 
-        final String ANSI_BLUE = "\u001B[34m";
-        StringBuilder sb = new StringBuilder();
-
-
-        sb.append("Mensaje\n");
-        sb.append(ANSI_PURPLE).append(getFechaHora()).append(" | @").append(autor).append("\n")
-                .append(ajustarTexto(contenido, ANSI_PURPLE)).append(ANSI_RESET).append("\n");
-        
-        sb.append("Respuestas:\n");
-        for (AtrMensaje respuesta : respuestas) {
-            sb.append(ANSI_BLUE).append(respuesta.getFechaHora()).append(" | @").append(respuesta.getAutor())
-                    .append("\n").append(ANSI_RESET).append(ajustarTexto(respuesta.getContenido(), ANSI_BLUE))
-                    .append("\n\n");
-        }
-
-        return sb.toString();
+    sb.append("Respuestas:\n");
+    for (AtrMensaje respuesta : respuestas) {
+        sb.append("\t"); // Alineación inicial para cada respuesta
+        sb.append(ANSI_BLUE).append(respuesta.getFechaHora()).append(" | @").append(respuesta.getAutor())
+                .append("\n").append(ANSI_RESET)
+                .append(ajustarTexto(respuesta.getContenido(), ANSI_BLUE, "\t")); // Fija una indentación uniforme
+        sb.append("\n\n");
     }
 
-    private String ajustarTexto(String texto, String color) {
-        StringBuilder sb = new StringBuilder();
-        int indiceInicio = 0;
-        while (indiceInicio < texto.length()) {
-            int indiceFin = Math.min(indiceInicio + ANCHO_MAXIMO, texto.length());
-            sb.append(color).append(texto.substring(indiceInicio, indiceFin)).append(ANSI_RESET);
-            if (indiceFin < texto.length()) {
-                sb.append("\n"); // Agregar salto de línea si hay más texto por ajustar
-            }
-            indiceInicio = indiceFin;
+    return sb.toString();
+}
+
+private String ajustarTexto(String texto, String color, String indent) {
+    StringBuilder sb = new StringBuilder();
+    int indiceInicio = 0;
+    
+    // Se aplica el indentado a todas las líneas incluyendo las que están divididas
+    while (indiceInicio < texto.length()) {
+        int indiceFin = Math.min(indiceInicio + ANCHO_MAXIMO, texto.length());
+
+        sb.append(indent) // Alineación uniforme para cada línea dividida
+          .append(color)
+          .append(texto.substring(indiceInicio, indiceFin))
+          .append(ANSI_RESET);
+
+        if (indiceFin < texto.length()) {
+            sb.append("\n"); // Salto de línea si hay más texto
         }
-        return sb.toString();
+
+        indiceInicio = indiceFin;
     }
+    
+    return sb.toString();
+}
+
+
+
+
 }

@@ -17,24 +17,23 @@ public class MenuUusario {
                       MENU DE USUARIO        
                                                
                       [1].Ir al foro           
-                      [2].Ver Especialistas   
-                      [3].Mi perfil          
-                      [4].Cerrar Sesión       
+                      [2].Mi perfil          
+                      [3].Cerrar Sesión       
     
                       
                       """;
 
         while (true) {
-            String input = JOptionPane.showInputDialog(null, menu + "\nIngresa una opción válida (1-4):", "Menu de Usuario", JOptionPane.QUESTION_MESSAGE);
+            String input = JOptionPane.showInputDialog(null, menu + "\nIngresa una opción válida (1-3):", "Menu de Usuario", JOptionPane.QUESTION_MESSAGE);
             if (input == null) {
                 System.exit(0); // Si el usuario cancela, salir del programa
             }
             try {
                 op = Integer.parseInt(input);
-                if (op >= 1 && op <= 4) {
+                if (op >= 1 && op <= 3) {
                     break;
                 } else {
-                    JOptionPane.showMessageDialog(null, "El valor no está en el rango (1-4)", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El valor no está en el rango (1-3)", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Error: Entrada no válida - No sigue el formato establecido", "Error", JOptionPane.ERROR_MESSAGE);

@@ -17,13 +17,6 @@ public interface metSoloAdministrador {
 
     boolean EliminarUsuario(String user, ArrayList<AtrUsuario> usuarios);
 
-    //metodos para los especialistas
-    int buscarEspecialista(String user, ArrayList<AtrEspecialistas> especialistas);
-
-    boolean ActivarEspecialista(String user, ArrayList<AtrEspecialistas> especialistas);
-
-    boolean DesactivarEspecialista(String user, ArrayList<AtrEspecialistas> especialistas);
-
-    boolean EliminarEspecialista(String user, ArrayList<AtrEspecialistas> especialistas);
+  
 
 }

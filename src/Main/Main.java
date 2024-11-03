@@ -34,7 +34,7 @@ public class Main {
         gestionU.descongelarusuarios(); // Cargar usuarios al inicio
         AtrUsuario.cargarContador();
 
-        AtrEspecialistas gestionE = new AtrEspecialistas();
+  
         AtrForo foro = new AtrForo(); // Crear instancia de foro y cargar temas
         AtrUsuario usuarioActual = null;
         StringBuilder mensajex = new StringBuilder();
@@ -145,40 +145,18 @@ public class Main {
 
                                     } while (opF != 5 && usuarioActual != null);
                                     break;
+                                
                                 case 2:
-                                    StringBuilder mensaje = new StringBuilder();
-                                    mensaje.append("Lista de especialistas activos: \n");
-                                    boolean hayEspecialistasActivos = false;
-
-                                    for (AtrEspecialistas e : gestionE.espe) {
-                                        if (e.isEstado()) {
-                                            hayEspecialistasActivos = true;
-                                            mensaje.append("Especialidad: ").append(e.getEspecialidad().toUpperCase()).append("\n");
-                                            mensaje.append("Nombres: ").append(e.getNombres()).append("\n");
-                                            mensaje.append("Contacto:\n");
-                                            mensaje.append("Email: ").append(e.getUsuario()).append("\n");
-                                            mensaje.append("Telefono: ").append(e.getTelefono()).append("\n\n");
-                                        }
-                                    }
-
-                                    if (!hayEspecialistasActivos) {
-                                        mensaje.append("No hay especialistas para mostrar");
-                                    }
-
-                                    JOptionPane.showMessageDialog(null, mensaje.toString(), "Especialistas activos", JOptionPane.INFORMATION_MESSAGE);
-
-                                    break;
-                                case 3:
                                     JOptionPane.showMessageDialog(null, "Nombres: " + usuarioActual.getNombres() + "\n"
                                             + "Usuario: " + usuarioActual.getUsuario() + "\n" + "Contraseña: " + usuarioActual.getContra(), "Datos de usuario", JOptionPane.INFORMATION_MESSAGE);
                                     break;
-                                case 4:
+                                case 3:
                                     rueda.r();
                                     LogOut.cerrarSesion();
                                     break;
 
                             }
-                        } while (opUsuario != 4 && usuarioActual != null);
+                        } while (opUsuario != 3 && usuarioActual != null);
                     } else {
                         rueda.r();
                         JOptionPane.showMessageDialog(null, "Inicio de sesión fallido. Credenciales incorrectas", "Error",
@@ -186,46 +164,6 @@ public class Main {
                     }
                 }
                 case 2 -> {
-                    AtrEspecialistas especialistaActual = gestionE.iniciarSesion(InputLogin.pedirUsuario(),
-                            InputLogin.pedirContra());
-                    if (especialistaActual != null) {
-                        rueda.r();
-                        LogInC.ingresandoSesion();
-                        int opEspe = 0;
-                        do {
-
-                            try {
-                                opEspe = MenuEspecialista.menuEspecialista();
-                            } catch (Excepcion_EntradaIncorrecta ex) {
-                                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error",
-                                        JOptionPane.ERROR_MESSAGE);
-                            }
-                            switch (opEspe) {
-                                case 1:
-                                    break;
-                                case 2:
-                                    JOptionPane.showMessageDialog(null, "No tiene notificaciones aún");
-                                    break;
-                                case 3:
-                                    JOptionPane.showMessageDialog(null, "Nombres: " + especialistaActual.getNombres() + "\n"
-                                            + "User Especialista: " + especialistaActual.getUsuario() + "\n" + "Contraseña: " + especialistaActual.getContra()
-                                            + "\n" + "telefono: " + especialistaActual.getEspecialidad() + "\n" + "dni: " + especialistaActual.getDni()
-                                            + "\n" + "telefono: " + especialistaActual.getTelefono(), "Datos de especialista", JOptionPane.INFORMATION_MESSAGE);
-
-                                    break;
-                                case 4:
-                                    rueda.r();
-                                    LogOut.cerrarSesion();
-                                    especialistaActual = null;
-                                    break;
-                            }
-                        } while (opEspe != 4 && especialistaActual != null);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Inicio de sesión fallido.", "Error",
-                                JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-                case 3 -> {
                     int opAdmin = 0;
                     AtrAdministrador admin = new AtrAdministrador();
                     String adminUser = InputLogin.pedirUsuario();
@@ -290,48 +228,8 @@ public class Main {
                                     }
                                 } while (opOpcion != 3);
                                 break;
+                            
                             case 2:
-                                if (gestionE.espe.isEmpty()) {
-                                    JOptionPane.showMessageDialog(null,
-                                            "No hay especialistas registrados, hasta el momento", "ADVERTENCIA",
-                                            JOptionPane.WARNING_MESSAGE);
-                                    break;
-                                }
-                                int opMenuEs;
-                                do {
-                                    opMenuEs = gestionE.mostrarArray();
-                                    switch (opMenuEs) {
-                                        case 0: // Desactivar Especialista
-                                            String userh = JOptionPane
-                                                    .showInputDialog("Ingrese el nombre del especialista:");
-                                            if (admin.DesactivarEspecialista(userh, gestionE.espe)) {
-                                                mEspeDesactivo.msgDesEspe();
-                                            } else {
-                                                mEspeNoEncontrado.notFoundEspe();
-                                            }
-                                            break;
-                                        case 1: // Reactivar Especialista
-                                            String userToReactivate = JOptionPane
-                                                    .showInputDialog("Ingrese el nombre del usuario:");
-                                            if (admin.ActivarEspecialista(userToReactivate, gestionE.espe)) {
-                                                mEspeActivo.msgActEspe();
-                                            } else {
-                                                mEspeNoEncontrado.notFoundEspe();
-                                            }
-                                            break;
-                                        case 2: // Eliminar Especialista
-                                            String userE = JOptionPane
-                                                    .showInputDialog("Ingrese el nombre del usuario:");
-                                            if (admin.EliminarEspecialista(userE, gestionE.espe)) {
-                                                mEspeEliminado.msgEspeEliminado();
-                                            } else {
-                                                mEspeNoEncontrado.notFoundEspe();
-                                            }
-                                            break;
-                                    }
-                                } while (opMenuEs != 3);
-                                break;
-                            case 3:
                                 StringBuilder temasMensaje = new StringBuilder("Temas creados:\n");
                                 for (AtrTema tema : foro.getTemas()) {
                                     temasMensaje.append(tema.getTitulo()).append("\n");
@@ -339,7 +237,7 @@ public class Main {
                                 JOptionPane.showMessageDialog(null, temasMensaje.toString(), "Temas", JOptionPane.INFORMATION_MESSAGE);
 
                                 break;
-                            case 4:
+                            case 3:
                                 StringBuilder mensajesMensaje = new StringBuilder("Mensajes:\n");
                                 for (AtrTema tema : foro.getTemas()) {
                                     mensajesMensaje.append("Tema: ").append(tema.getTitulo()).append("\n");
@@ -349,7 +247,7 @@ public class Main {
                                 }
                                 mostrarMensajesEnPaginas(mensajesMensaje.toString(), "Mensajes");
                                 break;
-                            case 5:
+                            case 4:
                                 // Solicitar fechas al usuario
                                 String fechaInicioStr = JOptionPane.showInputDialog("Ingrese la fecha de inicio (YYYY-MM-DD):");
                                 String fechaFinStr = JOptionPane.showInputDialog("Ingrese la fecha de fin (YYYY-MM-DD):");
@@ -386,21 +284,20 @@ public class Main {
                                 }
                                 break;
 
-                            case 6:
+                            case 5:
                                 rueda.r();
                                 LogOut.cerrarSesion();
                         }
-                    } while (opAdmin != 6);
+                    } while (opAdmin != 5);
                 }
 
-                case 4 ->
+                case 3 ->
                     formsRegistro.registrarUsuario(gestionU);
-                case 5 ->
-                    formsRegistro.registrarEspecialista(gestionE);
-                case 6 ->
+             
+                case 4 ->
                     Exit.exit();
             }
-        } while (opRegistro != 6);
+        } while (opRegistro != 4);
     } // Función para limpiar el formato de consola
 
     private static String limpiarFormatoConsola(String texto) {

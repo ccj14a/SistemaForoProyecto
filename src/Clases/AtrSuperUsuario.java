@@ -33,7 +33,6 @@ public abstract class AtrSuperUsuario implements Serializable {
 
     public abstract int mostrarArray();
 
-
     // metodos getters and settters para acceder a los atributos
     public String getNombres() {
         return nombres;
@@ -71,6 +70,5 @@ public abstract class AtrSuperUsuario implements Serializable {
     public String toString() {
         return "" + "nombres=" + nombres + ", usuario=" + usuario + ", contrase\u00f1a=" + contra + ", estado=" + estado + " ";
     }
-
 
 }

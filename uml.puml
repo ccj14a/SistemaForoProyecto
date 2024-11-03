@@ -4,38 +4,13 @@ class Clases.AtrAdministrador {
 + boolean login(String, String)
 + int mostrarArray()
 + boolean DesactivarUsuario(String, ArrayList<AtrUsuario>)
-+ boolean DesactivarEspecialista(String, ArrayList<AtrEspecialistas>)
 + int buscarUsuario(String, ArrayList<AtrUsuario>)
-+ int buscarEspecialista(String, ArrayList<AtrEspecialistas>)
 + boolean ActivarUsuario(String, ArrayList<AtrUsuario>)
 + boolean EliminarUsuario(String, ArrayList<AtrUsuario>)
-+ boolean ActivarEspecialista(String, ArrayList<AtrEspecialistas>)
-+ boolean EliminarEspecialista(String, ArrayList<AtrEspecialistas>)
 + void guardarArray(AtrSuperUsuario)
 }
 
-class Clases.AtrEspecialistas {
-- String direccion
-- String telefono
-- String dni
-- String especialidad
-- int idEspecialista
-- {static} int contador
-+ ArrayList<AtrEspecialistas> espe
-+ String getEspecialidad()
-+ void setEspecialidad(String)
-+ String getTelefono()
-+ String getDni()
-+ void setDni(String)
-+ void setTelefono(String)
-+ boolean guardarDatos(String)
-+ void guardarArray(AtrEspecialistas)
-+ boolean login(String, String)
-+ AtrEspecialistas iniciarSesion(String, String)
-+ int mostrarArray()
-+ String toString()
-+ void guardarArray(AtrSuperUsuario)
-}
+
 
 class Clases.AtrMensaje {
 - {static} long serialVersionUID
@@ -78,10 +53,6 @@ interface Clases.metSoloAdministrador {
 ~ boolean DesactivarUsuario(String, ArrayList<AtrUsuario>)
 ~ boolean ActivarUsuario(String, ArrayList<AtrUsuario>)
 ~ boolean EliminarUsuario(String, ArrayList<AtrUsuario>)
-~ int buscarEspecialista(String, ArrayList<AtrEspecialistas>)
-~ boolean ActivarEspecialista(String, ArrayList<AtrEspecialistas>)
-~ boolean DesactivarEspecialista(String, ArrayList<AtrEspecialistas>)
-~ boolean EliminarEspecialista(String, ArrayList<AtrEspecialistas>)
 }
 
 class Clases.AtrForo {
@@ -130,8 +101,6 @@ class Clases.AtrTema {
 Clases.metSoloAdministrador <|.. Clases.AtrAdministrador
 java.io.Serializable <|.. Clases.AtrAdministrador
 Clases.AtrSuperUsuario <|-- Clases.AtrAdministrador
-java.io.Serializable <|.. Clases.AtrEspecialistas
-Clases.AtrSuperUsuario <|-- Clases.AtrEspecialistas
 java.io.Serializable <|.. Clases.AtrMensaje
 java.io.Serializable <|.. Clases.AtrUsuario
 Clases.AtrSuperUsuario <|-- Clases.AtrUsuario

@@ -16,11 +16,10 @@ public class MenuAdministracion {
                    MENU DE ADMINISTRACIÓN
 
                    [1].Administrar Usuarios
-                   [2].Administrar Especialistas
-                   [3].Temas creados
-                   [4].Administrar Mensajes
-                   [5].Filtrar foro
-                   [6].Cerrar Sesion
+                   [2].Temas creados
+                   [3].Administrar Mensajes
+                   [4].Filtrar foro
+                   [5].Cerrar Sesion
 
                 """;
 
@@ -32,7 +31,7 @@ public class MenuAdministracion {
             }
             try {
                 op = Integer.parseInt(input);
-                if (op >= 1 && op <= 6) {
+                if (op >= 1 && op <= 5) {
                     break;
                 } else {
                     JOptionPane.showMessageDialog(null, "El valor no está en el rango (1-5)", "Error",

@@ -8,13 +8,14 @@ import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.io.Serializable;
+import java.util.LinkedList;
 
 public class AtrUsuario extends AtrSuperUsuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private int idUsuario;
     private static int contador = 0;
-    public ArrayList<AtrUsuario> usuarios = new ArrayList<>();
+    public ArrayList<AtrUsuario> usuarios = new ArrayList<>(); 
 
     public AtrUsuario(String nombres, String usuario, String contra) {
         super(nombres, usuario, contra);

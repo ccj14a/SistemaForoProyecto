@@ -19,15 +19,7 @@ public class Implementacion_Comun {
         return -1;
     }
 
-    // Método para buscar un especialista en la lista por nombre de usuario
-    public static int buscarEspecialista(String user, ArrayList<AtrEspecialistas> especialistas) {
-        for (int i = 0; i < especialistas.size(); i++) {
-            if (especialistas.get(i).getUsuario().equals(user)) {
-                return i;
-            }
-        }
-        return -1;
-    }
+  
 
     public static boolean eliminarUsuario(String user, ArrayList<AtrUsuario> usuarios) {
         int pos = buscarUsuario(user, usuarios);
@@ -59,33 +51,11 @@ public class Implementacion_Comun {
 
     }
 
-    public static boolean eliminarEspecialista(String user, ArrayList<AtrEspecialistas> especialistas) {
-        int pos = buscarEspecialista(user, especialistas);
-        if (pos != -1) {
-            especialistas.remove(pos); 
-            return true;
-        }
-        return false;
-    }
+  
 
-    // Método para eliminar un especialista de la lista por nombre de usuario
-    public static boolean DesactivarEspecialista(String user, ArrayList<AtrEspecialistas> especialistas) {
-        int pos = buscarEspecialista(user, especialistas);
-        if (pos != -1) {
-            especialistas.get(pos).setEstado(false);
-            return true;
-        }
-        return false;
-    }
+ 
+   
 
-    public static boolean ActivarEspecialista(String user, ArrayList<AtrEspecialistas> especialistas) {
-        int pos = buscarEspecialista(user, especialistas);
-        if (pos != -1) {
-            especialistas.get(pos).setEstado(true);
-            return true;
-        }
-        return false;
 
-    }
 
 }

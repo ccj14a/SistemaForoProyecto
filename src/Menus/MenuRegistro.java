@@ -18,25 +18,24 @@ public class MenuRegistro {
                       BIENVENDIDO A "CONVERSA360"      
                                
                       *Ingresar como:                           
-                           [1].Usuario                          
-                           [2].Especialista                     
-                           [3].Administrador                    
+                           [1].Usuario                                           
+                           [2].Administrador                    
                       *No tienes una cuenta?.Crear:             
-                           [4].Como usuario                    
-                           [5].Como especialista                
-                           [6].Cerrar Aplicación                
+                           [3].Como usuario                    
+                           [4].Como especialista                
+                           [5].Cerrar Aplicación                
                          
                            """;
 
         while (true) {
-            String input = JOptionPane.showInputDialog(null, menu + "\nColoca una opción válida (1-6):", "CONVERSA360", JOptionPane.QUESTION_MESSAGE);
+            String input = JOptionPane.showInputDialog(null, menu + "\nColoca una opción válida (1-5):", "CONVERSA360", JOptionPane.QUESTION_MESSAGE);
             if (input == null) {
                 // Si el usuario cancela la entrada, salir del programa
                 System.exit(0);
             }
             try {
                 op = Integer.parseInt(input);
-                if (op >= 1 && op <= 6) {
+                if (op >= 1 && op <= 5) {
                     break;
                 } else {
                     JOptionPane.showMessageDialog(null, "Opción fuera del rango (1-6)", "Error", JOptionPane.ERROR_MESSAGE);
