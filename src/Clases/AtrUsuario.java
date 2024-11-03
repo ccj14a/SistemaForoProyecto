@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.io.Serializable;
-import java.util.LinkedList;
+
 
 public class AtrUsuario extends AtrSuperUsuario implements Serializable {
 
@@ -133,15 +133,7 @@ public class AtrUsuario extends AtrSuperUsuario implements Serializable {
         return null;
     }
 
-    @Override
-    public void congelarDatos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void descongelarDatos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+ 
 
  
 

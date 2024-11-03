@@ -27,10 +27,6 @@ public abstract class AtrSuperUsuario implements Serializable {
 
     public abstract void guardarArray(AtrSuperUsuario usuario);
 
-    public abstract void congelarDatos();
-
-    public abstract void descongelarDatos();
-
     public abstract int mostrarArray();
 
     // metodos getters and settters para acceder a los atributos
