@@ -63,7 +63,7 @@ public class AtrMensaje  implements Serializable  {
     sb.append(ANSI_PURPLE).append(getFechaHora()).append(" | @").append(autor).append("\n")
             .append(ajustarTexto(contenido, ANSI_PURPLE, "")).append(ANSI_RESET).append("\n");
 
-    sb.append("Respuestas:\n");
+    sb.append("Comentarios:\n");
     for (AtrMensaje respuesta : respuestas) {
         sb.append("\t"); // Alineación inicial para cada respuesta
         sb.append(ANSI_BLUE).append(respuesta.getFechaHora()).append(" | @").append(respuesta.getAutor())

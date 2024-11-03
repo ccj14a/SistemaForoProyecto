@@ -11,7 +11,7 @@ public class MenuRegistro {
 
     public static int menuRegistro() throws Excepcion_EntradaIncorrecta {
         String menu = """
-            BIENVENIDO A "CONVERSA360"
+            BIENVENIDO A "PERÚ CONECTA"
             *Ingresar como:
             [1] Usuario
             [2] Administrador\n

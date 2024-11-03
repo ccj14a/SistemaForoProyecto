@@ -37,14 +37,8 @@ public class Main {
   
         AtrForo foro = new AtrForo(); // Crear instancia de foro y cargar temas
         AtrUsuario usuarioActual = null;
-        StringBuilder mensajex = new StringBuilder();
-        mensajex.append("BIENVENIDO A FORO360\n").append("Explora, comparte y aprende junto a una comunidad activa de entusiastas como tú.\n Desde discusiones candentes hasta ideas innovadoras, estamos aquí para inspirar y conectar.\n ¡No te lo pierdas! Únete ahora y sé parte de la conversación en Foro360.\n"
-                + "\n"
-                + "¡Esperamos verte pronto en nuestros debates!\n");
-        mensajex.append("¿Qué puedes esperar en Foro360?\n").append("1. Diversidad de Temas: Desde tecnología hasta arte, política, deportes y más,"
-                + "\ntenemos un lugar para cada interés y pasión. Explora una amplia gama de temas y descubre nuevas perspectivas.").append("\n\n2. Intercambio Constructivo: Fomentamos un ambiente donde el respeto y la diversidad de opiniones"
-                        + "\nson fundamentales. Aquí puedes debatir, aprender y crecer sin miedo a expresar tu punto de vista.").append("\n\n3. Comunidad Activa: Con miles de miembros activos, Foro360 es más que un foro: es una red de mentes creativas y curiosas. "
-                        + "\nConéctate con personas de todo el mundo que comparten tus intereses y están dispuestas a intercambiar ideas.");
+        StringBuilder mensajex = Mensaje.mensaje();
+
         JOptionPane.showMessageDialog(null, mensajex);
         do {
             try {

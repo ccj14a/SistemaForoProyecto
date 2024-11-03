@@ -14,10 +14,10 @@ public class MenuForo {
 
     public static int menuForo() {
         String menu = """
-            FORO "CONVERSA360"
+            FORO "PERÚ "
             [1]. Crear tema
             [2]. Añadir mensaje
-            [3]. Responder a mensaje
+            [3]. Realizar un comentario
             [4]. Mostrar foro
             [5]. Buscar en el foro
             [6]. Filtrar por autor

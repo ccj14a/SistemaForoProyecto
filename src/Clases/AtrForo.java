@@ -96,7 +96,7 @@ public class AtrForo implements Serializable {
                     String respuestaContenido = respuesta.getContenido().toLowerCase();
                     if (respuestaContenido.contains(palabraClaveLower)) {
                         resultados.append("Tema: ").append(tema.getTitulo()).append("<br>")
-                                .append("Respuesta: ").append(resaltarPalabraClave(respuesta.getContenido(), palabraClave)).append("<br><br>");
+                                .append("Comentarios: ").append(resaltarPalabraClave(respuesta.getContenido(), palabraClave)).append("<br><br>");
                         encontrado = true;
                     }
                 }
